@@ -5,13 +5,13 @@ import { home_page, add_user, update_user, delete_user } from './api_handler.js'
 
 export const options = {
     stages: [
-        { duration: '10s', target: 200 },
-        { duration: '20s', target: 300 },
-        { duration: '10s', target: 0 }
+        { duration: '10s', target: 200 }, //ramping up 200 users in 10 seconds
+        { duration: '20s', target: 300 }, //ramping up users to 300 in next 20 seconds
+        { duration: '10s', target: 0 }    //ramping down users from 300 to 0 in 10 seconds
     ],
     thresholds: {
-        'http_req_duration': ['avg<3000'],
-        'http_req_failed': ['rate<5']
+        'http_req_duration': ['avg<3000'], //threshold avg time of req < 3s
+        'http_req_failed': ['rate<5']      //threshold failed rate < 5%
     }
 }
 
